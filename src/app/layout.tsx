@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     siteName: "BlogFront",
     images: [
       {
-        url: "https://blog-front-orpin.vercel.app/Thumbnail.png",
+        url: "/Thumbnail.png",
         width: 1200,
         height: 630,
         alt: "썸네일",
