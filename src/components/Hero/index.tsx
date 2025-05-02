@@ -10,6 +10,7 @@ const Hero = () => {
         autoPlay
         loop
         muted
+        playsInline
         className="background-video z-0"
         style={{
           position: "absolute",
