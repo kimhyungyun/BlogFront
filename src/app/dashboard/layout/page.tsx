@@ -20,10 +20,10 @@ export default function Header() {
         isScrolled ? "bg-white/80 backdrop-blur-md shadow-lg" : "bg-transparent"
       }`}
     >
-      <nav className="container mx-auto px-6 py-5 ">
+      <nav className="container mx-auto px-6 py-10 ">
         <div className="flex justify-between items-center">
-          <div className="text-2xl font-extrabold text-amber-50">방명록</div>
-          <div className="flex items-center gap-8">
+          <div className="text-2xl font-extrabold text-amber-50">BOARD</div>
+          <div className="flex items-center gap-15">
             <Link
               href="/"
               className="text-gray-700 hover:text-blue-600 font-medium transition-all duration-200 hover:scale-105"

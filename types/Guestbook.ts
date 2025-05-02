@@ -4,4 +4,5 @@ export interface Guestbook {
   content: string;
   createdAt: string;
   likes: number;
+  views: number;
 }

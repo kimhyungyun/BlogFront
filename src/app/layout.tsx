@@ -7,6 +7,22 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 export const metadata: Metadata = {
   title: "HG - Portfolio",
   description: "풀스택 개발자 HG의 포트폴리오입니다.",
+  openGraph: {
+    title: "BlogFront",
+    description: "풀스택 개발자 HG의 포트폴리오입니다",
+    url: "https://blog-front-orpin.vercel.app",
+    siteName: "BlogFront",
+    images: [
+      {
+        url: "https://blog-front-orpin.vercel.app/Thumbnail.png",
+        width: 1200,
+        height: 630,
+        alt: "썸네일",
+      },
+    ],
+    locale: "ko_KR",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

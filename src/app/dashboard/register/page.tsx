@@ -90,7 +90,7 @@ export default function RegisterPage() {
             </button>
             <button
               type="submit"
-              onClick={() => router.push("/dashboard/register")}
+              onClick={() => router.push("/dashboard")}
               className="px-8 py-2.5 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl font-medium hover:opacity-90 transition duration-200 shadow-md hover:shadow-lg"
             >
               등록하기

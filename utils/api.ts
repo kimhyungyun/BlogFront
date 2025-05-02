@@ -22,3 +22,13 @@ export const deleteGuestbook = async (id: number): Promise<void> => {
 export const likeGuestbook = async (id: number): Promise<void> => {
   await axios.patch(`${API_URL}/guestbooks/${id}/like`);
 };
+
+export const incrementView = async (id: number) => {
+  try {
+    const response = await axios.patch(`${API_URL}/guestbooks/${id}/view`);
+    return response.data;
+  } catch (error) {
+    console.error("조회수 증가 실패:", error);
+    throw new Error("조회수 증가 실패");
+  }
+};

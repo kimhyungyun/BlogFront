@@ -1,30 +1,44 @@
 "use client";
 
 import Link from "next/link";
-import { Guestbook } from "../../../types/Guestbook";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { likeGuestbook } from "../../../utils/api";
+import { GuestbookCardProps } from "../../../types/GuestbookCardProps";
 
-interface GuestbookCardProps {
-  guestbook: Guestbook;
-}
+const LIKE_BUTTON_TEXT = "❤️ 좋아요";
+const DEFAULT_AUTHOR_LENGTH = 5;
+
+const handleApiAction = async (
+  apiFunc: Function,
+  id: string,
+  setState: React.Dispatch<React.SetStateAction<number>>
+) => {
+  try {
+    await apiFunc(id);
+    setState((prev) => prev + 1);
+  } catch (error) {
+    console.error("API 호출 실패:", error);
+  }
+};
+
+const formatAuthorName = (author: string) => {
+  return author.length > DEFAULT_AUTHOR_LENGTH
+    ? `${author.slice(0, 4)}...`
+    : author;
+};
 
 export default function GuestbookCard({ guestbook }: GuestbookCardProps) {
   const [likes, setLikes] = useState(guestbook.likes);
-
-  const handleLike = async (e: React.MouseEvent) => {
-    e.preventDefault();
-    try {
-      await likeGuestbook(guestbook.id);
-      setLikes((prev) => prev + 1);
-    } catch (error) {
-      console.error("좋아요 실패:", error);
+  const [formattedDate, setFormattedDate] = useState<string | null>(null);
+  useEffect(() => {
+    if (guestbook.createdAt) {
+      setFormattedDate(new Date(guestbook.createdAt).toLocaleDateString());
     }
-  };
+  }, [guestbook.createdAt]);
 
   return (
-    <Link href={`/dashboard/${guestbook.id}`}>
-      <div className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow">
+    <Link href={`/dashboard/${guestbook.id}`} passHref>
+      <div className="bg-white rounded-2xl ">
         <div className="aspect-video bg-gray-100 relative">
           <div className="absolute inset-0 flex items-center justify-center">
             <p className="text-gray-800 line-clamp-3 p-4">
@@ -42,23 +56,28 @@ export default function GuestbookCard({ guestbook }: GuestbookCardProps) {
             </div>
 
             <div className="flex-1 min-w-0">
-              <h3 className="font-medium text-base text-gray-900 line-clamp-2">
-                {guestbook.content}
-              </h3>
               <div className="flex items-center text-sm text-gray-600 mt-1 gap-2">
-                <span className="font-medium">{guestbook.author}</span>
-                <span className="mx-1">•</span>
-                <span>조회수 {likes}회</span>
+                <span className="font-medium">
+                  {formatAuthorName(guestbook.author)}
+                </span>
                 <span className="mx-1">•</span>
                 <span>
-                  {new Date(guestbook.createdAt).toLocaleDateString()}
+                  <span>{formattedDate}</span>
                 </span>
                 <button
-                  onClick={handleLike}
-                  className="ml-auto text-sm bg-pink-100 text-pink-700 px-2 py-1 rounded hover:bg-pink-200"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleApiAction(
+                      likeGuestbook,
+                      String(guestbook.id),
+                      setLikes
+                    );
+                  }}
+                  className="ml-auto text-sm bg-pink-100 text-pink-700 px-2 py-1 rounded `hover`:bg-pink-200 cursor-pointer"
                 >
-                  ❤️ 좋아요
+                  {LIKE_BUTTON_TEXT}
                 </button>
+                <span>❤️ {likes}회</span>
               </div>
             </div>
           </div>
