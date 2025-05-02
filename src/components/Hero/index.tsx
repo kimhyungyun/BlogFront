@@ -6,20 +6,33 @@ import "../../../styles/Video.css";
 const Hero = () => {
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-b from-slate-50 to-slate-100">
-      <video autoPlay loop muted className="background-video">
+      <video
+        autoPlay
+        loop
+        muted
+        className="background-video z-0"
+        style={{
+          position: "absolute",
+          top: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          zIndex: 0,
+        }}
+      >
         <source src="sectionvideo.mp4" type="video/mp4" />
       </video>
       <div className="absolute inset-0 opacity-5"></div>
 
       <div className="container mx-auto px-4 relative">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-cente r">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             className="space-y-8"
           >
-            <div className="space-y-4">
+            <div className="space-y-4 mt-24 md:mt-20">
               <motion.span
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -58,7 +71,7 @@ const Hero = () => {
             >
               <a
                 href="#projects"
-                className="group relative px-8 py-4 bg-slate-900 text-white rounded-lg font-bold text-lg tracking-wider uppercase overflow-hidden hover:bg-slate-800 transition-all duration-300 flex items-center gap-2"
+                className="group relative px-8 py-4 bg-slate-900 text-white rounded-lg font-bold text-lg tracking-wider uppercase overflow-hidden hover:bg-slate-800 transition-all duration-300 flex items-center justify-center gap-2"
               >
                 <span className="relative z-10">프로젝트</span>
                 <svg
@@ -77,7 +90,7 @@ const Hero = () => {
               </a>
               <a
                 href="#contact"
-                className="group relative px-8 py-4 bg-transparent text-slate-900 border-2 border-slate-900 rounded-lg font-bold text-lg tracking-wider uppercase overflow-hidden hover:bg-slate-900 hover:text-white transition-all duration-300 flex items-center gap-2"
+                className="group relative px-8 py-4 bg-transparent text-slate-900 border-2 border-slate-900 rounded-lg font-bold text-lg tracking-wider uppercase overflow-hidden hover:bg-slate-900 hover:text-white transition-all duration-300 flex items-center justify-center gap-2"
               >
                 <span className="relative z-10">연락하기</span>
                 <svg

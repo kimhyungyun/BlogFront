@@ -110,10 +110,10 @@ const Projects = () => {
                         </span>
                       ))}
                     </div>
-                    <div className="flex gap-6">
+                    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full">
                       <a
                         href={project.gitlink}
-                        className="group relative px-8 py-4 bg-slate-900 text-white rounded-lg font-bold text-lg tracking-wider uppercase overflow-hidden hover:bg-slate-800 transition-all duration-300 flex items-center gap-2"
+                        className="group relative px-8 py-4 bg-slate-900 text-white rounded-lg font-bold text-lg tracking-wider uppercase overflow-hidden hover:bg-slate-800 transition-all duration-300 flex items-center justify-center gap-2"
                       >
                         <span className="relative z-10">코드 보기</span>
                         <svg
@@ -132,7 +132,7 @@ const Projects = () => {
                       </a>
                       <a
                         href={project.link}
-                        className="group relative px-8 py-4 bg-transparent text-slate-900 border-2 border-slate-900 rounded-lg font-bold text-lg tracking-wider uppercase overflow-hidden hover:bg-slate-900 hover:text-white transition-all duration-300 flex items-center gap-2"
+                        className="group relative px-8 py-4 bg-transparent text-slate-900 border-2 border-slate-900 rounded-lg font-bold text-lg tracking-wider uppercase overflow-hidden hover:bg-slate-900 hover:text-white transition-all duration-300 flex items-center justify-center gap-2"
                       >
                         <span className="relative z-10">사이트 보기</span>
                         <svg
@@ -151,7 +151,7 @@ const Projects = () => {
                       </a>
                       <a
                         href={project.boardlink}
-                        className="group relative px-8 py-4 bg-transparent text-slate-900 border-2 border-slate-900 rounded-lg font-bold text-lg tracking-wider uppercase overflow-hidden hover:bg-slate-900 hover:text-white transition-all duration-300 flex items-center gap-2"
+                        className="group relative px-8 py-4 bg-transparent text-slate-900 border-2 border-slate-900 rounded-lg font-bold text-lg tracking-wider uppercase overflow-hidden hover:bg-slate-900 hover:text-white transition-all duration-300 flex items-center justify-center gap-2"
                       >
                         <span className="relative z-10">댓글 달기</span>
                         <svg
