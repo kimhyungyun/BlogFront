@@ -18,6 +18,7 @@ export default function Home() {
         autoPlay
         loop
         muted
+        playsInline
         className="background-video z-0 absolute top-0 transform  w-full h-full object-cover"
       >
         <source src="Boardvideo.mp4" type="video/mp4" />
